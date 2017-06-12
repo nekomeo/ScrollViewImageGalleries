@@ -13,6 +13,7 @@
 		6A4236E81EEEF3FC0057C664 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A4236E61EEEF3FC0057C664 /* Main.storyboard */; };
 		6A4236EA1EEEF3FC0057C664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A4236E91EEEF3FC0057C664 /* Assets.xcassets */; };
 		6A4236ED1EEEF3FC0057C664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A4236EB1EEEF3FC0057C664 /* LaunchScreen.storyboard */; };
+		6A4F0B061EEF460000052286 /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F0B051EEF460000052286 /* ScrollViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		6A4236E91EEEF3FC0057C664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A4236EC1EEEF3FC0057C664 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A4236EE1EEEF3FC0057C664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A4F0B041EEF460000052286 /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
+		6A4F0B051EEF460000052286 /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				6A4236E01EEEF3FB0057C664 /* AppDelegate.h */,
 				6A4236E11EEEF3FB0057C664 /* AppDelegate.m */,
+				6A4F0B041EEF460000052286 /* ScrollViewController.h */,
+				6A4F0B051EEF460000052286 /* ScrollViewController.m */,
 				6A4236E31EEEF3FC0057C664 /* ViewController.h */,
 				6A4236E41EEEF3FC0057C664 /* ViewController.m */,
 				6A4236E61EEEF3FC0057C664 /* Main.storyboard */,
@@ -153,6 +158,7 @@
 				6A4236E51EEEF3FC0057C664 /* ViewController.m in Sources */,
 				6A4236E21EEEF3FB0057C664 /* AppDelegate.m in Sources */,
 				6A4236DF1EEEF3FB0057C664 /* main.m in Sources */,
+				6A4F0B061EEF460000052286 /* ScrollViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +315,7 @@
 				6A4236F31EEEF3FC0057C664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
