@@ -19,13 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self pagingScrollView];
+    [self pagingScrollView] ;
     
 //    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse-in-Field.jpg"]];
 //    imageView.contentMode = UIViewContentModeScaleAspectFit;
 //    imageView.backgroundColor = [UIColor yellowColor];
 //    
 //    [self.scrollView addSubview:imageView];
+    
 }
 
 - (void)pagingScrollView
@@ -46,8 +47,7 @@
         [self.scrollView addSubview:image];
     }
     
-    self.scrollView.contentSize = CGSizeMake(imagesArray.count * CGRectGetWidth(self.view.frame),
-                                             CGRectGetHeight(self.view.frame));
+    self.scrollView.contentSize = CGSizeMake(imagesArray.count * CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
 }
 
 @end

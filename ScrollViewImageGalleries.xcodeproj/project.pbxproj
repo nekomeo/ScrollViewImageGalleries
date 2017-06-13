@@ -14,6 +14,7 @@
 		6A4236EA1EEEF3FC0057C664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A4236E91EEEF3FC0057C664 /* Assets.xcassets */; };
 		6A4236ED1EEEF3FC0057C664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A4236EB1EEEF3FC0057C664 /* LaunchScreen.storyboard */; };
 		6A4F0B061EEF460000052286 /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F0B051EEF460000052286 /* ScrollViewController.m */; };
+		6A4F0B091EEF55DC00052286 /* ImageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F0B081EEF55DC00052286 /* ImageDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		6A4236EE1EEEF3FC0057C664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A4F0B041EEF460000052286 /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
 		6A4F0B051EEF460000052286 /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
+		6A4F0B071EEF55DC00052286 /* ImageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDetailViewController.h; sourceTree = "<group>"; };
+		6A4F0B081EEF55DC00052286 /* ImageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 				6A4236E11EEEF3FB0057C664 /* AppDelegate.m */,
 				6A4F0B041EEF460000052286 /* ScrollViewController.h */,
 				6A4F0B051EEF460000052286 /* ScrollViewController.m */,
+				6A4F0B071EEF55DC00052286 /* ImageDetailViewController.h */,
+				6A4F0B081EEF55DC00052286 /* ImageDetailViewController.m */,
 				6A4236E31EEEF3FC0057C664 /* ViewController.h */,
 				6A4236E41EEEF3FC0057C664 /* ViewController.m */,
 				6A4236E61EEEF3FC0057C664 /* Main.storyboard */,
@@ -115,6 +120,7 @@
 				TargetAttributes = {
 					6A4236D91EEEF3FB0057C664 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = L595LLJNVG;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -156,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A4236E51EEEF3FC0057C664 /* ViewController.m in Sources */,
+				6A4F0B091EEF55DC00052286 /* ImageDetailViewController.m in Sources */,
 				6A4236E21EEEF3FB0057C664 /* AppDelegate.m in Sources */,
 				6A4236DF1EEEF3FB0057C664 /* main.m in Sources */,
 				6A4F0B061EEF460000052286 /* ScrollViewController.m in Sources */,
@@ -278,6 +285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L595LLJNVG;
 				INFOPLIST_FILE = ScrollViewImageGalleries/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = frostnova.org.ScrollViewImageGalleries;
@@ -289,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L595LLJNVG;
 				INFOPLIST_FILE = ScrollViewImageGalleries/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = frostnova.org.ScrollViewImageGalleries;
