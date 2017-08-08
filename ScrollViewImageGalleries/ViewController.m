@@ -7,12 +7,15 @@
 //
 
 #import "ViewController.h"
+#import "ImageDetailViewController.h"
 
 @interface ViewController () <UIScrollViewDelegate>
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic) UIImageView *firstImage;
-@property (nonatomic) UIImageView *secondImage;
-@property (nonatomic) UIImageView *thirdImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
+
+
+@property (strong, nonatomic) NSArray <UIImageView *> *imageViews;
 
 @end
 
@@ -21,9 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self pagingScrollView];
+    self.imageViews = @[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse-in-Field"]],
+                        [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse-night"]],
+                        [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse"]]];
     
+    self.pageControl.numberOfPages = self.imageViews.count;
+    
+    UITapGestureRecognizer *tappedImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage)];
+    [self.scrollView addGestureRecognizer:tappedImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,34 +39,51 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)pagingScrollView
+- (void)viewDidAppear:(BOOL)animated
 {
-//    CGFloat xOrigin = 0;
-//    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    self.scrollView.pagingEnabled = YES;
-//    
-////    NSArray *imagesArray = [NSArray arrayWithObjects:@"Lighthouse-in-Field.jpg", @"Lighthouse-night.jpg", @"Lighthouse.jpg", nil];
-//    
-//    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Lighthouse-in-Field.jpg"]];
-//    imageView.contentMode = UIViewContentModeScaleAspectFit;
-//    imageView.backgroundColor = [UIColor yellowColor];
-//    
-//    [self.scrollView addSubview:imageView];
-//    
-//    for (int i = 0; i < imagesArray.count; i++)
-//    {
-//        xOrigin = i * self.scrollView.frame.size.width;
-//        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//        
-//        [image setImage:[UIImage imageNamed:[imagesArray objectAtIndex:i]]];
-//        [image setContentMode:UIViewContentModeScaleAspectFit];
-//        
-//        [self.scrollView addSubview:image];
-//        
-////        xOrigin += CGRectGetWidth(self.view.frame);
-//    }
+    [super viewDidAppear:animated];
     
-//    self.scrollView.contentSize = CGSizeMake(xOrigin, CGRectGetHeight(self.view.frame));
+    int i = 0;
+    for (UIImageView *imageView in self.imageViews)
+    {
+        imageView.frame = CGRectMake(i * self.scrollView.frame.size.width, 0, self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+        
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        [self.scrollView addSubview:imageView];
+        
+        i++;
+    }
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width*self.imageViews.count, self.scrollView.frame.size.height);
+    
+}
+
+#pragma mark - Scroll View Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    float fractionalPage = self.scrollView.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toDetailView"])
+    {
+        UIImage *image = (UIImage *)sender;
+        ImageDetailViewController *detailVC = [segue destinationViewController];
+        detailVC.image = image;
+    }
+}
+
+- (void)tappedImage
+{
+    UIImageView *imageView = self.imageViews[self.pageControl.currentPage];
+    UIImage *image = imageView.image;
+    [self performSegueWithIdentifier:@"toDetailView" sender:image];
 }
 
 @end

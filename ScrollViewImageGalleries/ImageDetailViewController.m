@@ -8,73 +8,53 @@
 
 #import "ImageDetailViewController.h"
 
-@interface ImageDetailViewController ()
+@interface ImageDetailViewController () <UIScrollViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
-@property (nonatomic) UIImageView *image;
-@property (nonatomic) UIPanGestureRecognizer *twoFingerPinch;
-@property (nonatomic) CGFloat currentScale;
-@property (nonatomic) CGFloat minScale;
-@property (nonatomic) CGFloat maxScale;
+
+@property (nonatomic) UIImageView *detailImageView;
+@property (strong, nonatomic) NSArray <UIImageView *> *imageViews;
 
 @end
 
 @implementation ImageDetailViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.image = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.image.translatesAutoresizingMaskIntoConstraints = NO;
-    self.image.image = [UIImage imageNamed:@"Lighthouse.jpg"];
+    UIImage *image = self.image;
+    self.detailImageView = [[UIImageView alloc] initWithImage:image];
     
-    [self.detailScrollView addSubview:self.image];
+    self.detailImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.detailScrollView addSubview:self.detailImageView];
     
-    NSLayoutConstraint *leading = [self.image.leadingAnchor constraintEqualToAnchor:self.detailScrollView.leadingAnchor];
+    [self.detailImageView.topAnchor constraintEqualToAnchor:self.detailScrollView.topAnchor].active = YES;
+    [self.detailImageView.bottomAnchor constraintEqualToAnchor:self.detailScrollView.bottomAnchor].active = YES;
+    [self.detailImageView.leadingAnchor constraintEqualToAnchor:self.detailScrollView.leadingAnchor].active = YES;
+    [self.detailScrollView.trailingAnchor constraintEqualToAnchor:self.detailScrollView.trailingAnchor].active = YES;
     
-    NSLayoutConstraint *top = [self.image.topAnchor constraintEqualToAnchor:self.detailScrollView.topAnchor];
-    
-    NSLayoutConstraint *bottom = [self.image.bottomAnchor constraintEqualToAnchor:self.detailScrollView.bottomAnchor];
-    
-    NSLayoutConstraint *trailing = [self.image.trailingAnchor constraintEqualToAnchor:self.detailScrollView.trailingAnchor];
-    
-    [self.image.superview addConstraints:@[leading, top, bottom, trailing]];
-    
-    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(setTwoFingerPinch:)];
-//    pinchGesture.delegate = self;
-    [self.detailScrollView addGestureRecognizer:pinchGesture];
-    [self.detailScrollView setUserInteractionEnabled:YES];
-    
-    self.detailScrollView.minimumZoomScale = 1;
-    self.detailScrollView.maximumZoomScale = 3;
-    
-    self.currentScale = 1.0;
-    self.minScale = 0.5;
-    self.maxScale = 3.0;
+    self.detailScrollView.minimumZoomScale = 0.5;
+    self.detailScrollView.maximumZoomScale = 2.0;
 }
 
-- (UIView *)zoomInScroll:(UIScrollView *)sender
+- (void)viewDidAppear:(BOOL)animated
 {
-    return self.image;
+    [super viewDidAppear:animated];
 }
 
-- (void)setTwoFingerPinch:(UIPinchGestureRecognizer *)sender
+
+- (void)didReceiveMemoryWarning
 {
-//    CGFloat currentScale = sender.scale;
-//    CGFloat minScale = self.detailScrollView.minimumZoomScale;
-//    CGFloat maxScale = self.detailScrollView.maximumZoomScale;
-    
-    if (self.currentScale * sender.scale > self.minScale && self.currentScale < self.maxScale)
-    {
-        self.currentScale *= sender.scale;
-        CGAffineTransform zoom = CGAffineTransformMakeScale(self.currentScale, self.currentScale);
-        [[sender view] setTransform:zoom];
-    }
-    [sender setScale:1.0];
-}
-
-- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Scroll View Delegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.detailImageView;
 }
 
 
